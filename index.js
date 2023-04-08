@@ -51,10 +51,20 @@ function createIterable(from, to) {
         throw new Error()
     }
 
-    let iterable = []
-    for(let i = from; i <= to; i++) {
-        iterable.push(i)
+    return {
+        [Symbol.iterator]() {
+            let properties = Math.abs(from - to)
+            return {
+                next: () => {
+                    let obj = {
+                        done: (from >= properties - 1),
+                        value: from,
+                        key: from
+                    }
+                    from++
+                    return obj
+                }
+            }
+        }
     }
-
-    return iterable
 }
