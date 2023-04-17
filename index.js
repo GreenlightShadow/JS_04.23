@@ -14,7 +14,7 @@ function curry(fn) {
 
 
 class Calculator {
-    
+
     constructor(x, y) {
         if (Number(x) !== x
             || Number(y) !== y
@@ -67,7 +67,7 @@ class RickAndMorty {
     _link = 'https://rickandmortyapi.com/api/'
 
     getCharacter(charId){
-        if ((charId ^ 0) !== charId || charId < 1){
+        if (Number.isNaN(charId) || !Number.isFinite(charId)){
             throw new Error()
         }
 
@@ -89,7 +89,7 @@ class RickAndMorty {
     }
 
     async getEpisode(episodeId){
-        if ((episodeId ^ 0) !== episodeId || episodeId < 1){
+        if (Number.isNaN(episodeId) || !Number.isFinite(episodeId)){
             throw new Error()
         }
 
