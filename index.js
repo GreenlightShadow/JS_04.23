@@ -24,11 +24,20 @@ class Stack{
             throw new Error('Empty stack')
         }
 
+        let newStack = this.#crop()
+        let last = this.#stack[this.#size - 1]
         --this.#size
-        let last = this.#stack[this.#size]
-        delete this.#stack[this.#size]
+        this.#stack = newStack
 
         return last
+    }
+
+    #crop(index = 0, stack = []) {
+        if (index < this.#size - 1) {
+            stack = [this.#stack[index], ...this.#crop(index + 1, stack)]
+        }
+
+        return stack
     }
 
     peek() {
@@ -305,3 +314,5 @@ class Car {
         return this.#mileage
     }
 }
+
+let stk = new Stack(5)
