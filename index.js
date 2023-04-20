@@ -314,5 +314,3 @@ class Car {
         return this.#mileage
     }
 }
-
-let stk = new Stack(5)
