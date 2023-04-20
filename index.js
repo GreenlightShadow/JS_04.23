@@ -15,7 +15,7 @@ class Stack{
             throw new Error('Limit exceeded')
         }
 
-        this.#stack = [...this.toArray(), elem]
+        this.#stack = [...this.#stack, elem]
         ++this.#size
     }
 
@@ -43,7 +43,7 @@ class Stack{
     peek() {
         let returnElem = null
 
-        if (!this.toArray().isEmpty()) {
+        if (!this.isEmpty()) {
             returnElem = this.#stack[this.#size - 1]
         }
 
@@ -55,7 +55,7 @@ class Stack{
     }
 
     toArray() {
-        return this.#stack.filter((n) => n !== undefined)
+        return this.#stack
     }
 
     static fromIterable(iterable) {
